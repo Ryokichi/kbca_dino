@@ -15,8 +15,9 @@ _global_script_class_icons={
 
 [application]
 
-config/name="teste game"
-run/main_scene="res://GamePlay.tscn"
+config/name="DinoHead"
+run/main_scene="res://hud screens/initialScreen.tscn"
+config/use_custom_user_dir=true
 config/icon="res://icon.png"
 
 [display]

@@ -7,6 +7,7 @@ var status = "alive"
 var vulnerable = true
 var damage_time = 0
 var hp = 3
+var vel= 150
 
 func _ready():
 	pass # Replace with function body.
