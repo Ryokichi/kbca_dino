@@ -19,9 +19,9 @@ texture = ExtResource( 2 )
 shape = SubResource( 1 )
 
 [node name="Attack" type="Area2D" parent="."]
+position = Vector2( 70, -20 )
 
 [node name="AttackCollisionShape" type="CollisionShape2D" parent="Attack"]
-position = Vector2( 70, -20 )
 shape = SubResource( 2 )
 disabled = true
 [connection signal="body_entered" from="Attack" to="." method="_on_Attack_body_entered"]

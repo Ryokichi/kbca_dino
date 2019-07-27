@@ -17,7 +17,7 @@ func spawn ():
 	var size = len(enemy_on_screen)
 	var pos_x = 150 * size;
 	
-	enemy_on_screen[size -1].position = Vector2(pos_x, 200);
+	enemy_on_screen[size -1].position = Vector2(1300, 500);
 	get_node(".").add_child(enemy_on_screen[size -1])
 	pass
 	
