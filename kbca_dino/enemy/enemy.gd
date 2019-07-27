@@ -1,6 +1,6 @@
 extends KinematicBody2D
 
-onready var mama = self.get_parent()
+onready var player = self.get_parent().get_parent().get_node("Player")
 
 var type = "enemy"
 var status = "alive"
@@ -9,7 +9,6 @@ var damage_time = 0
 var hp = 3
 
 func _ready():
-	print(mama.name)
 	pass # Replace with function body.
 
 func _process(delta):
@@ -19,6 +18,14 @@ func _process(delta):
 	elif (damage_time <= 0):
 		damage_time = 0
 		vulnerable = true
+		
+	if (vulnerable):
+		var ini_pos = get_position()
+		var end_pos = player.get_position()
+		
+		var dif_pos = Vector2(end_pos.x - ini_pos.x, end_pos.y - ini_pos.y)
+		print(dif_pos)
+		pass
 		
 	
 func get_type ():

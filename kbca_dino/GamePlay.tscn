@@ -1,16 +1,17 @@
 [gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://Node2D.gd" type="Script" id=1]
+[ext_resource path="res://GamePlay.gd" type="Script" id=1]
 [ext_resource path="res://player/player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://enemy/enemy_spawner.tscn" type="PackedScene" id=3]
 
-[sub_resource type="RectangleShape2D" id=3]
+[sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 616.173, 31.2632 )
 
 [node name="Game" type="Node2D"]
 script = ExtResource( 1 )
 
-[node name="KinematicBody2D" parent="." instance=ExtResource( 2 )]
+[node name="Player" parent="." instance=ExtResource( 2 )]
+position = Vector2( 70, 450 )
 
 [node name="ParedeCima" type="StaticBody2D" parent="."]
 editor/display_folded = true
@@ -18,7 +19,7 @@ position = Vector2( 1.05264, 58.9474 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ParedeCima"]
 position = Vector2( 614.737, 32.6316 )
-shape = SubResource( 3 )
+shape = SubResource( 1 )
 
 [node name="ColorRect" type="ColorRect" parent="ParedeCima"]
 margin_right = 1231.0
@@ -30,7 +31,7 @@ position = Vector2( 2.10525, 521.053 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ParedeBaixo"]
 position = Vector2( 614.737, 32.6316 )
-shape = SubResource( 3 )
+shape = SubResource( 1 )
 
 [node name="ColorRect" type="ColorRect" parent="ParedeBaixo"]
 margin_right = 1231.0

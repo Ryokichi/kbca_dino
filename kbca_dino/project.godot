@@ -16,8 +16,13 @@ _global_script_class_icons={
 [application]
 
 config/name="teste game"
-run/main_scene="res://Node2D.tscn"
+run/main_scene="res://GamePlay.tscn"
 config/icon="res://icon.png"
+
+[display]
+
+window/stretch/mode="viewport"
+window/stretch/aspect="keep"
 
 [input]
 

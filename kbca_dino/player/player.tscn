@@ -10,24 +10,18 @@ extents = Vector2( 41.12, 47.6316 )
 extents = Vector2( 23.2782, 22.4737 )
 
 [node name="Player" type="KinematicBody2D"]
-position = Vector2( 4.21051, 131.579 )
 script = ExtResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
-position = Vector2( 115, 107 )
 texture = ExtResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 114, 109 )
 shape = SubResource( 1 )
-
-[node name="Attack_old" type="StaticBody2D" parent="."]
-position = Vector2( 182.368, 83.8421 )
 
 [node name="Attack" type="Area2D" parent="."]
 
 [node name="AttackCollisionShape" type="CollisionShape2D" parent="Attack"]
-position = Vector2( 182.368, 83.8421 )
+position = Vector2( 70, -20 )
 shape = SubResource( 2 )
 disabled = true
 [connection signal="body_entered" from="Attack" to="." method="_on_Attack_body_entered"]
