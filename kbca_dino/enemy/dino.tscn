@@ -3,10 +3,10 @@
 [ext_resource path="res://enemy/dino.gd" type="Script" id=1]
 [ext_resource path="res://img/dino.png" type="Texture" id=2]
 
-[sub_resource type="RectangleShape2D" id=2]
+[sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 19.1665, 21.6779 )
 
-[sub_resource type="RectangleShape2D" id=1]
+[sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 26.3495, 2.47911 )
 
 [node name="Dino" type="KinematicBody2D"]
@@ -20,8 +20,8 @@ texture = ExtResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite/StaticBody2D"]
 position = Vector2( 3.08005, -9.75349 )
-shape = SubResource( 2 )
+shape = SubResource( 1 )
 
 [node name="Foot" type="CollisionShape2D" parent="."]
 position = Vector2( -2.56672, 41.0674 )
-shape = SubResource( 1 )
+shape = SubResource( 2 )

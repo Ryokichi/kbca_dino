@@ -12,6 +12,7 @@ func _ready():
 
 func spawn ():
 	var index = randi() % len(enemy_list)
+	index = 1
 	enemy_on_screen.append(enemy_list[index].instance())
 	
 	var size = len(enemy_on_screen)
@@ -22,7 +23,6 @@ func spawn ():
 	pass
 	
 func i_have_to_kill_you (son):
-	print("size before ", len(enemy_on_screen))
 	var i = 0
 	while i < len(enemy_on_screen):
 		if (enemy_on_screen[i] == son):
@@ -32,6 +32,4 @@ func i_have_to_kill_you (son):
 			pass
 		i += 1
 		pass
-	print("size after ", len(enemy_on_screen))
-	print(enemy_on_screen)
 	pass
