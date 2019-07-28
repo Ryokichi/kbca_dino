@@ -6,7 +6,7 @@
 [ext_resource path="res://enemy/enemy_spawner.tscn" type="PackedScene" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 616.173, 31.2632 )
+extents = Vector2( 600, 20 )
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 30, 300 )
@@ -30,7 +30,8 @@ collision_mask = 3
 [node name="EnemySpawner" parent="." instance=ExtResource( 4 )]
 
 [node name="ParedeCima" type="StaticBody2D" parent="."]
-position = Vector2( 511, 380 )
+editor/display_folded = true
+position = Vector2( 511, 392 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ParedeCima"]
 shape = SubResource( 1 )

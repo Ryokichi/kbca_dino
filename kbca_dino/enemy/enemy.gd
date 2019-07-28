@@ -21,16 +21,17 @@ func _ready():
 	add_child(timer)
 	
 	pass # Replace with function body.
-	
 
 
 func sort_state():
 	curr_state = states[randi() % len(states)]
+	curr_state = states[0] #apagar
 	print ("Estado:", curr_state)
 	timer.set_wait_time(randf() * 3 + 2)
 	
 	pass
-	
+
+
 func _process(delta):
 	if (stun_time > 0):
 		stun_time -= delta
@@ -41,16 +42,21 @@ func _process(delta):
 		
 	if (!stunned):
 		if (curr_state == "chasing"):
+			$Sprite/AnimationPlayer.play("walk")
 			self.chase(delta)
 		elif (curr_state == "ahead"):
+			$Sprite/AnimationPlayer.play("walk")
 			self.walk_ahead(delta)
+		else:
+			$Sprite/AnimationPlayer.play("idle")
 		pass
-		
-	
+
+
 func get_type ():
 	return type
 	pass
-	
+
+
 func take_damage():
 	if (stunned):
 		return
@@ -63,7 +69,8 @@ func take_damage():
 		status = "dead"
 		print(self.get_parent().i_have_to_kill_you(self))
 	pass
-	
+
+
 func chase (delta):
 	var ini_pos = get_position()
 	var end_pos = player.get_position()
@@ -75,7 +82,8 @@ func chase (delta):
 	move_and_collide(Vector2(vel_x, vel_y) * delta)
 	set_orientation(vel_x)
 	pass
-	
+
+
 func walk_ahead (delta):
 	var ini_pos = get_position()
 	var end_pos = player.get_position()
@@ -83,9 +91,10 @@ func walk_ahead (delta):
 	var vel_x = vel if (dif_pos.x > 0) else -vel
 	move_and_collide(Vector2(vel_x, 0) * delta)
 	set_orientation(vel_x)
-	
+
+
 func set_orientation (to_x):
 	if (to_x > 0):
-		$Sprite.set_flip_h(true)
-	else :
 		$Sprite.set_flip_h(false)
+	else :
+		$Sprite.set_flip_h(true)

@@ -10,9 +10,10 @@ var attack_list = ["attack1","attack2","attack2","attack1","attack1","attack2","
 
 var cur_state = "null"
 var new_state = "idle"
-var looking_to = "left";
+var looking_to = "right";
 
 var atacando = false
+var wait_time = 0;
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -26,10 +27,16 @@ func _ready():
 func _process(delta):
 	if (atacando):
 		return
-	moviment(delta)
-	atack(delta)
 	if (cur_state != new_state):
 		change_state()
+		
+	atack(delta)
+	wait_time -= delta
+	if (wait_time > 0):
+		return
+	else:
+		wait_time = 0
+	moviment(delta)
 	pass
 
 func moviment(delta):
@@ -64,7 +71,7 @@ func changeLook():
 		$Sprite.set_flip_h(true)
 		$Sprite/Attack.position.x = abs($Sprite/Attack.position.x)
 		$Sprite/Body.position.x = abs($Sprite/Body.position.x)
-	
+
 
 func change_state():
 	if (new_state == "idle"):
@@ -75,8 +82,11 @@ func change_state():
 	cur_state = new_state
 	pass
 
+
 func atack(delta):
 	if Input.is_action_just_pressed("atack"):
+		wait_time = 100
+		timeAtack = 0
 		attack.get_node("AttackCollisionShape").disabled = false
 		attack_seq += 1
 		if (attack_seq >= len(attack_list)):
@@ -87,7 +97,7 @@ func atack(delta):
 		atacando = true
 	if !attack.get_node("AttackCollisionShape").disabled:
 		timeAtack += delta
-	if timeAtack > 0.35:
+	if timeAtack > 0.35 && timeAtack <= 0.45:
 		attack.get_node("AttackCollisionShape").disabled = true
 	elif timeAtack > 0.45:
 		attack.get_node("AttackCollisionShape").disabled = true
@@ -106,5 +116,6 @@ func _on_AnimationPlayer_animation_finished(anim_name):
 	print ("terminei uma animação")
 	atacando = false
 	$Sprite/AnimationPlayer.play("idle")
-	new_state = "idle"
+	wait_time = 0.2
+	new_state = "null"
 	pass # Replace with function body.

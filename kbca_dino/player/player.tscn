@@ -65,14 +65,14 @@ tracks/0/keys = {
 "values": [ 9, 10, 11, 12, 13, 14, 15, 16 ]
 }
 
-[sub_resource type="RectangleShape2D" id=6]
+[sub_resource type="RectangleShape2D" id=5]
 extents = Vector2( 17.6212, 29.7136 )
 
-[sub_resource type="RectangleShape2D" id=5]
+[sub_resource type="RectangleShape2D" id=6]
 extents = Vector2( 9.26951, 15.8022 )
 
 [sub_resource type="RectangleShape2D" id=7]
-extents = Vector2( 51.2377, 3.47565 )
+extents = Vector2( 35.9799, 3.47565 )
 
 [node name="Player" type="KinematicBody2D"]
 script = ExtResource( 1 )
@@ -93,22 +93,20 @@ anims/walk = SubResource( 4 )
 [node name="Body" type="StaticBody2D" parent="Sprite"]
 rotation = 3.14159
 scale = Vector2( 2.5, -2.5 )
-collision_layer = 16
-collision_mask = 16
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite/Body"]
 position = Vector2( -2.41965, -4.21746 )
-shape = SubResource( 6 )
+shape = SubResource( 5 )
 
 [node name="Attack" type="Area2D" parent="Sprite"]
 position = Vector2( -72.6551, 11.0707 )
 rotation = -3.14159
 scale = Vector2( 2.5, -2.5 )
-collision_layer = 16
-collision_mask = 16
+collision_layer = 8
+collision_mask = 8192
 
 [node name="AttackCollisionShape" type="CollisionShape2D" parent="Sprite/Attack"]
-shape = SubResource( 5 )
+shape = SubResource( 6 )
 disabled = true
 
 [node name="FootCollision" type="CollisionShape2D" parent="."]
