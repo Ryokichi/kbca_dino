@@ -1,10 +1,13 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://enemy/dino.gd" type="Script" id=1]
 [ext_resource path="res://img/dino.png" type="Texture" id=2]
 
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 19.1665, 21.6779 )
+
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 26.3495, 15.3126 )
+extents = Vector2( 26.3495, 2.47911 )
 
 [node name="Dino" type="KinematicBody2D"]
 script = ExtResource( 1 )
@@ -13,6 +16,12 @@ script = ExtResource( 1 )
 position = Vector2( -9.24405, -2.36152 )
 texture = ExtResource( 2 )
 
-[node name="CollisionShape" type="CollisionShape2D" parent="."]
-position = Vector2( -13.3469, -23.6137 )
+[node name="StaticBody2D" type="StaticBody2D" parent="Sprite"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite/StaticBody2D"]
+position = Vector2( 3.08005, -9.75349 )
+shape = SubResource( 2 )
+
+[node name="Foot" type="CollisionShape2D" parent="."]
+position = Vector2( -2.56672, 41.0674 )
 shape = SubResource( 1 )

@@ -8,8 +8,8 @@ var stunned = false
 var states = ["stopped", "chasing", "ahead"]
 var curr_state = states[0]
 var stun_time = 0
-var hp = 3
-var vel= 50
+var hp = 10
+var vel= 150
 
 var timer
 
