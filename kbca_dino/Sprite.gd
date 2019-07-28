@@ -1,5 +1,7 @@
 extends KinematicBody2D
 
+var hp = 100
+
 var attack : Area2D
 var timeAtack
 
@@ -15,8 +17,11 @@ var looking_to = "right";
 var atacando = false
 var wait_time = 0;
 
+var soco_pos = 0
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	soco_pos = $Sprite/Attack.position.x
 	timeAtack = 0;
 	attack = $Sprite/Attack
 	change_state()
@@ -25,10 +30,20 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	set_z_index(position.y)
 	if (atacando):
+		if ($Sprite/Attack.position.x != 0):
+			$Sprite/Attack.position.x = 0
+		else:
+			$Sprite/Attack.position.x = soco_pos
+			if (looking_to != "left"):
+				$Sprite/Attack.position.x = -soco_pos
+			
 		return
 	if (cur_state != new_state):
 		change_state()
+	if Input.is_key_pressed(KEY_D):
+		takeDamage(1)
 		
 	atack(delta)
 	wait_time -= delta
@@ -82,40 +97,49 @@ func change_state():
 	cur_state = new_state
 	pass
 
-
 func atack(delta):
 	if Input.is_action_just_pressed("atack"):
 		wait_time = 100
 		timeAtack = 0
-		attack.get_node("AttackCollisionShape").disabled = false
+		attack.get_node("Shape").disabled = false
 		attack_seq += 1
 		if (attack_seq >= len(attack_list)):
 			attack_seq = 0
-		print("A:", attack_seq, attack_list[attack_seq])
 		$Sprite/AnimationPlayer.play(attack_list[attack_seq])
 		new_state = "attack"
 		atacando = true
-	if !attack.get_node("AttackCollisionShape").disabled:
+		
+	if !attack.get_node("Shape").disabled:
 		timeAtack += delta
 	if timeAtack > 0.35 && timeAtack <= 0.45:
-		attack.get_node("AttackCollisionShape").disabled = true
+#		$Sprite/Attack.set_scale(Vector2(0,0))
+		attack.get_node("Shape").disabled = true
 	elif timeAtack > 0.45:
-		attack.get_node("AttackCollisionShape").disabled = true
+		attack.get_node("Shape").disabled = true
 		timeAtack = 0;
 		attack_seq = 0
 		new_state = "idle"
 	pass
 
 func _on_Attack_body_entered(body):
-	if (body.has_method("get_type")):
-		if (body.get_type() == "enemy"):
-			body.take_damage()
+	var avo = body.get_parent().get_parent();
+	print("Tem coisa aqui: ", body.name)
+		
+	if (avo.has_method("get_type")):
+		if (avo.get_type() == "enemy"):
+			avo.take_damage()
 	pass
 
 func _on_AnimationPlayer_animation_finished(anim_name):
-	print ("terminei uma animação")
 	atacando = false
 	$Sprite/AnimationPlayer.play("idle")
 	wait_time = 0.2
 	new_state = "null"
 	pass # Replace with function body.
+	
+func takeDamage(value):
+	hp -= value
+	if(hp<0):
+		hp = 0
+	print(hp)
+	pass

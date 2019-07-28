@@ -14,3 +14,7 @@ func _on_Attack_body_shape_entered(body_id, body, body_shape, area_shape):
 func _on_Attack_body_entered(body):
 	print("to no outro")
 	pass # Replace with function body.
+
+
+#func _on_AnimationPlayer_animation_finished(anim_name):
+#	pass # Replace with function body.

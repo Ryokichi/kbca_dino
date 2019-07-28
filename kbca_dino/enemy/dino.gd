@@ -4,3 +4,6 @@ extends "res://enemy/enemy.gd"
 func _ready():
 	print ("Dino criado")
 	pass
+
+#func _on_AnimationPlayer_animation_finished(anim_name):
+#	pass # Replace with function body.

@@ -65,16 +65,18 @@ tracks/0/keys = {
 "values": [ 9, 10, 11, 12, 13, 14, 15, 16 ]
 }
 
-[sub_resource type="RectangleShape2D" id=5]
-extents = Vector2( 17.6212, 29.7136 )
+[sub_resource type="RectangleShape2D" id=7]
+extents = Vector2( 21.7457, 25.0712 )
+
+[sub_resource type="RectangleShape2D" id=8]
+extents = Vector2( 10.8814, 19.957 )
 
 [sub_resource type="RectangleShape2D" id=6]
-extents = Vector2( 9.26951, 15.8022 )
-
-[sub_resource type="RectangleShape2D" id=7]
-extents = Vector2( 35.9799, 3.47565 )
+extents = Vector2( 10, 2 )
 
 [node name="Player" type="KinematicBody2D"]
+collision_layer = 0
+collision_mask = 3
 script = ExtResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
@@ -82,7 +84,7 @@ scale = Vector2( 0.6, 0.6 )
 texture = ExtResource( 2 )
 vframes = 2
 hframes = 9
-frame = 7
+frame = 5
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite"]
 anims/attack1 = SubResource( 1 )
@@ -93,24 +95,25 @@ anims/walk = SubResource( 4 )
 [node name="Body" type="StaticBody2D" parent="Sprite"]
 rotation = 3.14159
 scale = Vector2( 2.5, -2.5 )
+collision_layer = 16
+collision_mask = 16
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite/Body"]
-position = Vector2( -2.41965, -4.21746 )
-shape = SubResource( 5 )
+[node name="Shape" type="CollisionShape2D" parent="Sprite/Body"]
+shape = SubResource( 7 )
 
 [node name="Attack" type="Area2D" parent="Sprite"]
-position = Vector2( -72.6551, 11.0707 )
+position = Vector2( -86.6571, 0.816494 )
 rotation = -3.14159
 scale = Vector2( 2.5, -2.5 )
-collision_layer = 8
-collision_mask = 8192
+collision_layer = 0
+collision_mask = 32
 
-[node name="AttackCollisionShape" type="CollisionShape2D" parent="Sprite/Attack"]
-shape = SubResource( 6 )
+[node name="Shape" type="CollisionShape2D" parent="Sprite/Attack"]
+shape = SubResource( 8 )
 disabled = true
 
 [node name="FootCollision" type="CollisionShape2D" parent="."]
-position = Vector2( 4.96841, 53.9683 )
-shape = SubResource( 7 )
+position = Vector2( 0.0628314, 55.4179 )
+shape = SubResource( 6 )
 [connection signal="animation_finished" from="Sprite/AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
 [connection signal="body_entered" from="Sprite/Attack" to="." method="_on_Attack_body_entered"]

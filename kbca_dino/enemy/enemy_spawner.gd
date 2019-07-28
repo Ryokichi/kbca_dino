@@ -4,21 +4,26 @@ const dino = preload("res://enemy/dino.tscn")
 const mamute = preload("res://enemy/mamute.tscn")
 const porco = preload("res://enemy/porco.tscn")
 
-var enemy_list = [dino, mamute, porco]
+var enemy_list = [dino, mamute]
 var enemy_on_screen = []
-
+var timer
 func _ready():
+	timer = Timer.new()
+	timer.set_wait_time(5)
+	timer.connect("timeout", self, "spawn")
+	timer.start()
+	add_child(timer)
+	spawn()
 	pass # Replace with function body.
 
 func spawn ():
 	var index = randi() % len(enemy_list)
-	index = 1
 	enemy_on_screen.append(enemy_list[index].instance())
 	
 	var size = len(enemy_on_screen)
 	var pos_x = 150 * size;
 	
-	enemy_on_screen[size -1].position = Vector2(800, 500);
+	enemy_on_screen[size -1].position = Vector2(1100, 500);
 	get_node(".").add_child(enemy_on_screen[size -1])
 	pass
 	
