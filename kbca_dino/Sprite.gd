@@ -1,5 +1,7 @@
 extends KinematicBody2D
 
+var hp = 100
+
 var attack : Area2D
 var timeAtack
 
@@ -30,6 +32,8 @@ func _process(delta):
 	atack(delta)
 	if (cur_state != new_state):
 		change_state()
+	if Input.is_key_pressed(KEY_D):
+		takeDamage(1)
 	pass
 
 func moviment(delta):
@@ -108,3 +112,10 @@ func _on_AnimationPlayer_animation_finished(anim_name):
 	$Sprite/AnimationPlayer.play("idle")
 	new_state = "idle"
 	pass # Replace with function body.
+	
+func takeDamage(value):
+	hp -= value
+	if(hp<0):
+		hp = 0
+	print(hp)
+	pass

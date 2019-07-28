@@ -1,0 +1,64 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://hud screens/HudGamePlay.gd" type="Script" id=1]
+[ext_resource path="res://img/livro.png" type="Texture" id=2]
+[ext_resource path="res://hud screens/SF Slapstick Comic Shaded.ttf" type="DynamicFontData" id=3]
+
+[sub_resource type="AtlasTexture" id=1]
+flags = 4
+atlas = ExtResource( 2 )
+region = Rect2( 0, -7.46913, 69.8552, 62.1144 )
+
+[sub_resource type="StyleBoxFlat" id=2]
+bg_color = Color( 0.913725, 0.941176, 0.0588235, 1 )
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color( 0, 0, 0, 1 )
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id=3]
+bg_color = Color( 0.972549, 0.0196078, 0.0196078, 1 )
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color( 0, 0, 0, 1 )
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="DynamicFont" id=4]
+size = 24
+font_data = ExtResource( 3 )
+
+[node name="HudGamePlay" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 71, 58 )
+texture = SubResource( 1 )
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+margin_left = 122.0
+margin_top = 31.0
+margin_right = 362.0
+margin_bottom = 53.0
+custom_styles/fg = SubResource( 2 )
+custom_styles/bg = SubResource( 3 )
+percent_visible = false
+
+[node name="ScoreLabel" type="Label" parent="."]
+margin_left = 733.261
+margin_top = 30.0
+margin_right = 987.261
+margin_bottom = 57.0
+custom_fonts/font = SubResource( 4 )
+text = "Score:"
+valign = 1

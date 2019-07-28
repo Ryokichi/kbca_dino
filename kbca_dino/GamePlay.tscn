@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://GamePlay.gd" type="Script" id=1]
 [ext_resource path="res://img/bg.png" type="Texture" id=2]
 [ext_resource path="res://player/player.tscn" type="PackedScene" id=3]
 [ext_resource path="res://enemy/enemy_spawner.tscn" type="PackedScene" id=4]
+[ext_resource path="res://hud screens/HudGamePlay.tscn" type="PackedScene" id=5]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 616.173, 31.2632 )
@@ -31,6 +32,7 @@ collision_mask = 3
 
 [node name="ParedeCima" type="StaticBody2D" parent="."]
 position = Vector2( 511, 380 )
+collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ParedeCima"]
 shape = SubResource( 1 )
@@ -59,3 +61,5 @@ collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ParedeDir"]
 shape = SubResource( 3 )
+
+[node name="HudGamePlay" parent="." instance=ExtResource( 5 )]
