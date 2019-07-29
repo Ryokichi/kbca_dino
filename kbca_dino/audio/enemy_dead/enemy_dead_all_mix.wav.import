@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/enemy_dead_all_mix.wav-bf50a40ee838ec6774621c851a7718dc.sample"
+
+[deps]
+
+source_file="res://audio/enemy_dead/enemy_dead_all_mix.wav"
+dest_files=[ "res://.import/enemy_dead_all_mix.wav-bf50a40ee838ec6774621c851a7718dc.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

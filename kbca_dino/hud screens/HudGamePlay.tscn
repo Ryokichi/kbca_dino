@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://hud screens/HudGamePlay.gd" type="Script" id=1]
 [ext_resource path="res://img/livro.png" type="Texture" id=2]
 [ext_resource path="res://hud screens/SF Slapstick Comic Shaded.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://audio/enemy_dead/enemy_dead_00.wav" type="AudioStream" id=4]
 
 [sub_resource type="AtlasTexture" id=1]
 flags = 4
@@ -55,10 +56,14 @@ custom_styles/bg = SubResource( 3 )
 percent_visible = false
 
 [node name="ScoreLabel" type="Label" parent="."]
-margin_left = 733.261
-margin_top = 30.0
-margin_right = 987.261
-margin_bottom = 57.0
+margin_left = 825.883
+margin_top = 32.9404
+margin_right = 1079.88
+margin_bottom = 59.9404
 custom_fonts/font = SubResource( 4 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Score:"
 valign = 1
+
+[node name="AudioDeaf" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 4 )

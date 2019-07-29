@@ -18,12 +18,17 @@ var atacando = false
 var wait_time = 0;
 
 var soco_pos = 0
+var audioPunch: AudioStreamPlayer
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	soco_pos = $Sprite/Attack.position.x
 	timeAtack = 0;
 	attack = $Sprite/Attack
+	audioPunch = $AudioPunch
+	audioPunch.playing = false;
+	
+	
 	change_state()
 	changeLook()
 	pass # Replace with function body.
@@ -56,6 +61,7 @@ func _process(delta):
 
 func moviment(delta):
 	if (!atacando):
+		audioPunch.stop()
 		new_state = "idle"
 		if Input.is_key_pressed(KEY_DOWN):
 			move_and_collide(Vector2(0,vel*0.7)* delta)
@@ -99,6 +105,7 @@ func change_state():
 
 func atack(delta):
 	if Input.is_action_just_pressed("atack"):
+		audioPunch.play();
 		wait_time = 100
 		timeAtack = 0
 		attack.get_node("Shape").disabled = false
@@ -141,5 +148,8 @@ func takeDamage(value):
 	hp -= value
 	if(hp<0):
 		hp = 0
+		get_parent().get_node("tela de derrota").visible = true
+		get_parent().get_node("tela de derrota").set_z_index(1000)
+		get_parent().get_node("tela de derrota/Label2").text = "score: " + String(get_parent().get_node("HudGamePlay").score)
 	print(hp)
 	pass

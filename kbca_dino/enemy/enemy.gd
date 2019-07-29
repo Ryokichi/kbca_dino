@@ -66,7 +66,7 @@ func attack_monitor():
 	var end_pos = player.get_position()
 	var dif_pos = Vector2(end_pos.x - ini_pos.x, end_pos.y - ini_pos.y)
 	
-	print (dif_pos)
+	
 	if (abs(dif_pos.x) < 80 && abs(dif_pos.y) < 30):
 		attacking = true;
 		$Sprite/AnimationPlayer.play("atack")
@@ -87,8 +87,11 @@ func take_damage():
 	hp -= 1
 	stun_time = 0.3
 	if (hp <= 0):
-		print("Morri")
+		print("Morri")	
+		
 		status = "dead"
+		
+		
 		get_parent().get_parent().get_node("HudGamePlay").takeScore(1)
 		print(self.get_parent().i_have_to_kill_you(self))
 	pass

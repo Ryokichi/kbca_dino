@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/espirito.png-6041fa080f43df00bd03259e43d81d7b.stex"
+path="res://.import/Símbolo 1.png-255afcd12615cfc54abbc06ead9eb520.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://img/espirito.png"
-dest_files=[ "res://.import/espirito.png-6041fa080f43df00bd03259e43d81d7b.stex" ]
+source_file="res://img/Símbolo 1.png"
+dest_files=[ "res://.import/Símbolo 1.png-255afcd12615cfc54abbc06ead9eb520.stex" ]
 
 [params]
 

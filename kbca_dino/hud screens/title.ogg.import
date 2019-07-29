@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/title.ogg-7e1bd32dc9fd4b960170310dc750fda5.oggstr"
+
+[deps]
+
+source_file="res://hud screens/title.ogg"
+dest_files=[ "res://.import/title.ogg-7e1bd32dc9fd4b960170310dc750fda5.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

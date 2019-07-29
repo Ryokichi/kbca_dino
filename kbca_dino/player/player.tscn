@@ -1,7 +1,8 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Sprite.gd" type="Script" id=1]
 [ext_resource path="res://player/playerAtlas.png" type="Texture" id=2]
+[ext_resource path="res://audio/hits/2.ogg" type="AudioStream" id=3]
 
 [sub_resource type="Animation" id=1]
 length = 0.3
@@ -65,13 +66,13 @@ tracks/0/keys = {
 "values": [ 9, 10, 11, 12, 13, 14, 15, 16 ]
 }
 
-[sub_resource type="RectangleShape2D" id=7]
+[sub_resource type="RectangleShape2D" id=5]
 extents = Vector2( 21.7457, 25.0712 )
 
-[sub_resource type="RectangleShape2D" id=8]
+[sub_resource type="RectangleShape2D" id=6]
 extents = Vector2( 10.8814, 19.957 )
 
-[sub_resource type="RectangleShape2D" id=6]
+[sub_resource type="RectangleShape2D" id=7]
 extents = Vector2( 10, 2 )
 
 [node name="Player" type="KinematicBody2D"]
@@ -99,7 +100,7 @@ collision_layer = 16
 collision_mask = 16
 
 [node name="Shape" type="CollisionShape2D" parent="Sprite/Body"]
-shape = SubResource( 7 )
+shape = SubResource( 5 )
 
 [node name="Attack" type="Area2D" parent="Sprite"]
 position = Vector2( -86.6571, 0.816494 )
@@ -109,11 +110,14 @@ collision_layer = 0
 collision_mask = 32
 
 [node name="Shape" type="CollisionShape2D" parent="Sprite/Attack"]
-shape = SubResource( 8 )
+shape = SubResource( 6 )
 disabled = true
 
 [node name="FootCollision" type="CollisionShape2D" parent="."]
 position = Vector2( 0.0628314, 55.4179 )
-shape = SubResource( 6 )
+shape = SubResource( 7 )
+
+[node name="AudioPunch" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
 [connection signal="animation_finished" from="Sprite/AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
 [connection signal="body_entered" from="Sprite/Attack" to="." method="_on_Attack_body_entered"]

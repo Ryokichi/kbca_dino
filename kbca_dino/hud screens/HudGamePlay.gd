@@ -19,5 +19,6 @@ func _process(delta):
 	pass
 	
 func takeScore(value):
-	score+=value
+	score+= (value*100)
+	$AudioDeaf.play()
 	pass
